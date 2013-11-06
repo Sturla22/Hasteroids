@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://notendur.hi.is/pmelsted/kennsla/tol101g/auka.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+   <title>Aukaverkefni</title>
+   <meta name="author" content="Pall Melsted">
+
+   <link rel="stylesheet" href="./verkefni_files/style.css" type="text/css">
+<script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head>
+
+<body>
+<div id="wrapper">
+
+<div id="header">
+  <div>
+    <h1>
+   &nbsp;
+    </h1>
+  </div>
+ <div style="clear:both"> </div>
+</div>
+
+<div id="main">
+ <h2 id="aukaverkefni">Aukaverkefni</h2>
+
+<p>Nemendur mega vinna saman í hóp, mest 3 talsins. Aðeins þarf að skila einni lausn, en öll nöfn þurfa að koma fram ásamt hi.is netfangi til að hægt sé að skrá einkunnir. Nöfn allra eiga að koma fram efst í README.txt skjalinu sem þarf að skila.</p>
+
+<p>Allt að 20 stig verða gefin fyrir verkefnið og getur komið í staðin fyrir eitt eða tvö heimadæmi, eftir því sem hentar best.</p>
+
+<p>Skil eru á miðnætti <strong>þriðjudaginn 19. nóvember</strong> inn á sérmerkt svæði á uglunni. Sendið allann kóða, og aðrar skrár sem þið notið í leiknum (t.d. myndir og hljóð) í einni zip eða tar.gz skrá (RAR skrám verður hafnað!). Ef margir vinna saman í hóp á aðeins einn að skila lausninni inn.</p>
+
+<p>Látið einnig fylgja með README.txt skjal þar sem þið lýsið í grófum dráttum klösunum og hvaða hlutverki þeir hafa. Athugið að allir klasar sem þið notið þurfa að vera í möppunni eins og t.d. StdDraw.java o.s.frv.</p>
+
+<p>Ef þið viljið skila oftar en einu sinni fyrir skilafrest, þá þarf að merkja síðustu lausn sérstaklega. Ef fyrri lausn hét Leikur.zip þá að kalla nýjustu lausnina Leikur_v2.zip til að við sjáum hvaða skrá á að fara yfir.</p>
+
+<p><strong>Notið eingöngu klasana sem fylgja bókinni og java.util pakkana til að leysa þetta verkefni</strong></p>
+
+<p>Markmiðið með þessu verkefni eru að búa til tölvuleik sem líkist <a href="http://en.wikipedia.org/wiki/Asteroids_(video_game)">Asteroids</a>. Til að sjá hvernig leikurinn virkar er einfaldast að <a href="http://atari.com/arcade#!/arcade/asteroids/">spila</a> hann í nokkrar mínútur.</p>
+
+<p>Lýsingin hér að neðan er ein hugmynd um hvernig má útfæra leikinn, ekki hika við að breyta henni ef þið viljið ekki fylgja henni.</p>
+
+<ol>
+<li>
+<p>Notið klasana Shape, Rectangle, Circle sem þið skilið í Vikublaði 10 fyrir geimflaugina og smástirnin og jafnvel fleiri klasa. Endurnýtið sem mest af kóðanum en það má líka bæta við og breyta þessum klösum.</p>
+</li>
+
+<li>
+<p>Notið StdDraw.java til að sjá um allar teikningar og hreyfimyndir. Lýsing á því hvernig má búa til hreyfimyndir er á bls. 143-145 í bók. <a href="http://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html">Skjölunin fyrir StdDraw</a> inniheldur öll föllin og lýsingar á þeim. Skoðið sérstaklega isKeyPressed, mousePressed, mouseX og mouseY föllin. Það er líka hægt að teikna myndir á gif,png eða jpg með þessum klasa.</p>
+</li>
+
+<li>
+<p>Ekki reyna að leysa allt verkefnið í einu. Takið reglulega afrit af öllu þegar hann virkar (enn betra notið version control eins og mercurial eða git). Áður en þið byrjið að forrita skuluð þið setjast niður og skrifa hvað á að vera í leiknum, hvað þarf að gerast í hverju skrefi og hvernig þið ætlið að halda utan um allt þetta.</p>
+</li>
+
+<li>
+<p>Flestir leikir byggjast á að keyra “game loop” sem er endurtekin aftur og aftur þangað til að hætt er í leiknum.</p>
+</li>
+</ol>
+
+<p>game loop:</p>
+<!-- -->
+<pre><code>while( user doesn't exit )
+    check for user input
+    run AI
+    move enemies
+    resolve collisions
+    draw graphics
+    play sounds
+end while</code></pre>
+
+<p>Það er ágætt að keyra þetta í t.d. play() aðferð á klasanum sem heldur utan um leikinn og láta main() gera ekkert annað en að búa til klasann og spila leikinn, t.d.</p>
+
+<pre><code>public static void main(String[] args) {
+    Game game = new Game(...);
+    game.initialize(...); // kannski?
+    game.play(); // spilar leik
+}</code></pre>
+
+<p>Best er að skipta þróuninni niður í nokkur skref og ekki byrja á næsta skrefi þar til fyrri skref eru búin.</p>
+
+<ol>
+<li>
+<p>Setja upp hluti (geimskip, smástirni, …) á föstum stöðum og teikna á skjá.</p>
+</li>
+
+<li>
+<p>Setja upp hreyfimynda lykkju og láta hluti hreyfast úr stað (ekki hafa áhyggjur af hvar hann rekst á o.s.frv)</p>
+</li>
+
+<li>
+<p>Lesa inn músarhnit eða lyklaborð og hreyfa skipið fram og til baka, innan svæðisins.</p>
+</li>
+
+<li>
+<p>Bæta við hlutum t.d. skot og smástirni og fleira.</p>
+</li>
+
+<li>
+<p>Skot hittir smástirni og það splundrast í önnur minnni eða hverfur</p>
+</li>
+
+<li>
+<p>Halda utan um stig og skrifa á skjá</p>
+</li>
+
+<li>
+<p>Aukadót, t.d. hljóð, level, allt sem okkur dettur í hug.</p>
+</li>
+</ol>
+
+<h3 id="gagnlegir_hlekkir">Gagnlegir hlekkir:</h3>
+
+<ul>
+<li><a href="http://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html">Skjölunin á StdDraw</a></li>
+
+<li><a href="http://download.oracle.com/javase/6/docs/api/java/util/package-summary.html">java.util pakkinn</a></li>
+
+<li><a href="http://introcs.cs.princeton.edu/java/stdlib/javadoc/StdAudio.html">Skjölunin á StdAudio</a></li>
+
+<li><a href="http://www.superflashbros.net/as3sfxr/">Gamaldags tölvuleikjahljóð</a></li>
+</ul>
+</div>
+
+
+
+<div id="footer">
+pmelsted@hi.is — Sun 03 Nov 2013
+</div>
+
+
+</div> <!-- end wrapper --> 
+
+
+
+
+
+
+
+</body></html>
