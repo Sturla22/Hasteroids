@@ -21,9 +21,9 @@ public class Point2D {
 	public double distanceTo(Point2D b) {
 	return Math.sqrt(Math.abs(Math.pow(this.getX()-b.getX(),2)) + Math.abs(Math.pow(this.getY()-b.getY(),2)));
 	}
-    public setX(double x) {this.x = x;}
-    public setY(double y) {this.y = y;}
-    public reset(Point2D b) {
+    public void setX(double x) {this.x = x;}
+    public void setY(double y) {this.y = y;}
+    public void reset(Point2D b) {
         this.setX(b.x);
         this.setY(b.y);
     }
