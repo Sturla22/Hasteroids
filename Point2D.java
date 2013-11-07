@@ -17,9 +17,9 @@ public class Point2D {
     public double getY() { return y;}
     // Notkun: x = a.distanceTo(b)
 	// Fyrir: ekkert
-	// Eftir: x er fjarlaegdin milli a og b 
+	// Eftir: x er fjarlaegdin milli a og b
 	public double distanceTo(Point2D b) {
-	return Math.sqrt(Math.abs(Math.pow(this.getX()-b.getX(),2)) + Math.abs(Math.pow(this.getY()-b.getY(),2)));
+	return Math.sqrt(Math.pow(this.getX()-b.getX(),2) + Math.pow(this.getY()-b.getY(),2));
 	}
     public void setX(double x) {this.x = x;}
     public void setY(double y) {this.y = y;}

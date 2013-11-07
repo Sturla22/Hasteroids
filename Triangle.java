@@ -46,14 +46,16 @@ public class Triangle extends Shape{
 		this.c.reset(c);
 
 	}
+
+	
 	public void rotate(double deg){
 		double rad = Math.toRadians(deg);
-		Point2D a = new Point2D(Math.cos(rad)+this.a.getX(), Math.sin(rad)+this.a.getY());
-		Point2D b = new Point2D(Math.cos(rad)+this.b.getX(), Math.sin(rad)+this.b.getY());
-		Point2D c = new Point2D(Math.cos(rad)+this.c.getX(), Math.sin(rad)+this.c.getY());
-		this.a.reset(a);
-		this.b.reset(b);
-		this.c.reset(c);
+		Point2D an = new Point2D((pos.distanceTo(this.a))*Math.cos(rad+Math.acos(this.a.getX())), Math.sin(rad+Math.asin(this.a.getY())));
+		Point2D bn = new Point2D((pos.distanceTo(this.b))*Math.cos(rad+Math.acos(this.b.getX())), Math.sin(rad+Math.asin(this.b.getY())));
+		Point2D cn = new Point2D((pos.distanceTo(this.c))*Math.cos(rad+Math.acos(this.c.getX())), Math.sin(rad+Math.asin(this.c.getY())));
+		this.a.reset(an);
+		this.b.reset(bn);
+		this.c.reset(cn);
 
 	}
 	public Point2D getCenter(){return this.pos;}
@@ -61,8 +63,8 @@ public class Triangle extends Shape{
 		return "a: " + this.a + " b: " + this.b + " c: " + this.c;
 	}
 	public void draw(){
-			double x[] = new double[] {this.pos.getX()-this.width/2,this.pos.getX()+this.width/2,this.pos.getX()};
-			double y[] = new double[] {this.pos.getY()-this.height/2,this.pos.getY()-this.height/2,this.pos.getY()+this.height/2};
+			double x[] = new double[] {this.a.getX(),this.b.getX(),this.c.getX()};
+			double y[] = new double[] {this.a.getY(),this.b.getY(),this.c.getY()};
 			StdDraw.filledPolygon(x,y);
 	}
 
